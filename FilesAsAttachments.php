@@ -54,7 +54,7 @@ class FilesAsAttachmentsPlugin extends MantisPlugin {
 		if ( $p_type != $this->plugin_id() ) {
 			return;
 		}
-		list( , $t_files ) = $this->scan_dir( 'EVENT_FILE_FILES_GOT', $p_bug_id, array() );
+		list( , $t_files ) = $this->scan_dir( 'download', $p_bug_id, array() );
 		$row = $t_files[$p_file_id - 1];
 		return $row;
 	}
@@ -137,7 +137,11 @@ class FilesAsAttachmentsPlugin extends MantisPlugin {
 				$t_attachment['id'] = ++$t_index;
 				$t_attachment['user_id'] = $t_user_id;
 				$t_attachment['diskfile'] = $t_file_full;
-				$t_attachment['filename'] = $t_file_prefix . str_replace( $t_scan_dir, '', $t_file_full );
+				$t_filename = str_replace( $t_scan_dir, '', $t_file_full );
+				if ( $event !== 'download') {
+					$t_filename = $t_file_prefix . $t_filename;
+				}
+				$t_attachment['filename'] = $t_filename;
 				$t_attachment['title'] = '';
 				$t_attachment['description'] = '';
 				$t_attachment['filesize'] = filesize( $t_attachment['diskfile'] );
