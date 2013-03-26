@@ -1,0 +1,13 @@
+<?php
+
+# Copyright (c) 2012 Alexey Shumkin
+# Licensed under the MIT license
+
+$s_plugin_FilesAsAttachments_ = '';
+$s_plugin_FilesAsAttachments_title = 'Show files as attachments';
+$s_plugin_FilesAsAttachments_description = 'Shows files in directories as bug attachments';
+$s_plugin_FilesAsAttachments_configuration = 'Configuration';
+$s_plugin_FilesAsAttachments_view_threshold = 'Threshold to view files as attachments';
+$s_plugin_FilesAsAttachments_scan_dir = 'Directory to scan';
+$s_plugin_FilesAsAttachments_file_prefix = 'Filename prefix';
+$s_plugin_FilesAsAttachments_update_configuration = 'Update';

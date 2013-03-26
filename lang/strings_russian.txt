@@ -1,0 +1,12 @@
+<?php
+
+# Copyright (c) 2012 Alexey Shumkin
+# Licensed under the MIT license
+
+$s_plugin_FilesAsAttachments_ = '';
+$s_plugin_FilesAsAttachments_description = 'Показывает файлы в каталогах как вложенные файлы инцидента';
+$s_plugin_FilesAsAttachments_configuration = 'Конфигурация';
+$s_plugin_FilesAsAttachments_view_threshold = 'Уровень доступа';
+$s_plugin_FilesAsAttachments_scan_dir = 'Каталог для сканирования';
+$s_plugin_FilesAsAttachments_file_prefix = 'Префикс имени файла';
+$s_plugin_FilesAsAttachments_update_configuration = 'Обновить';
