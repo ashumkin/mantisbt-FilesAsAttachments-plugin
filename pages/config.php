@@ -51,6 +51,19 @@ print_manage_menu();
 	</td>
 </tr>
 
+<tr <?php echo helper_alternate_class() ?> >
+	<td class="category" width="60%">
+<?php
+	// this was taken from bug_file_upload_inc.php
+	$t_max_upload_file_size = number_format( (int)min( ini_get_number( 'upload_max_filesize' ), ini_get_number( 'post_max_size' ), config_get( 'max_file_size' ) ) / 1000 );
+	echo sprintf( plugin_lang_get( 'dont_show_small_files' ), $t_max_upload_file_size )
+?>
+	</td>
+	<td width="20%">
+		<input name="dont_show_small_files" type="checkbox" <?php echo ON == plugin_config_get('dont_show_small_files') ? 'checked="checked"' : '' ?>>
+	</td>
+</tr>
+
 <tr>
 	<td class="center" colspan="2"><input type="submit" value="<?php echo plugin_lang_get( 'update_configuration' ) ?>"/></td>
 </tr>

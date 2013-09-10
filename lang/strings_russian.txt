@@ -9,4 +9,5 @@ $s_plugin_FilesAsAttachments_configuration = 'Конфигурация';
 $s_plugin_FilesAsAttachments_view_threshold = 'Уровень доступа';
 $s_plugin_FilesAsAttachments_scan_dir = 'Каталог для сканирования';
 $s_plugin_FilesAsAttachments_file_prefix = 'Префикс имени файла';
+$s_plugin_FilesAsAttachments_dont_show_small_files = 'Не показывать небольшие файлы (размером меньше максимального: %s k)';
 $s_plugin_FilesAsAttachments_update_configuration = 'Обновить';

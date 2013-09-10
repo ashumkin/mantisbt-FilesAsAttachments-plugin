@@ -10,4 +10,5 @@ $s_plugin_FilesAsAttachments_configuration = 'Configuration';
 $s_plugin_FilesAsAttachments_view_threshold = 'Threshold to view files as attachments';
 $s_plugin_FilesAsAttachments_scan_dir = 'Directory to scan';
 $s_plugin_FilesAsAttachments_file_prefix = 'Filename prefix';
+$s_plugin_FilesAsAttachments_dont_show_small_files = 'Do not show small files (smaller than max upload size: %s k)';
 $s_plugin_FilesAsAttachments_update_configuration = 'Update';

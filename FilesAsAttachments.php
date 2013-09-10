@@ -8,7 +8,7 @@ class FilesAsAttachmentsPlugin extends MantisPlugin {
 		$this->name = plugin_lang_get( 'title' );
 		$this->description = plugin_lang_get( 'description' );
 
-		$this->version = '0.1';
+		$this->version = '0.2';
 		$this->requires = array(
 			'MantisCore' => '1.2.13'
 		);
@@ -25,6 +25,7 @@ class FilesAsAttachmentsPlugin extends MantisPlugin {
 			'view_threshold' => REPORTER,
 			'scan_dir' => '',
 			'file_prefix' => 'DISKFILE:',
+			'dont_show_small_files' => ON,
 		);
 	}
 
@@ -130,6 +131,7 @@ class FilesAsAttachmentsPlugin extends MantisPlugin {
 			}
 
 			$t_index = 0;
+			$t_max_upload_file_size = (int)min( ini_get_number( 'upload_max_filesize' ), ini_get_number( 'post_max_size' ), config_get( 'max_file_size' ) );
 			$t_file_prefix = plugin_config_get( 'file_prefix' );
 			foreach ( $t_files as $t_file_full => $t_file) {
 				$t_attachment = array();
@@ -137,6 +139,10 @@ class FilesAsAttachmentsPlugin extends MantisPlugin {
 				$t_attachment['id'] = ++$t_index;
 				$t_attachment['user_id'] = $t_user_id;
 				$t_attachment['diskfile'] = $t_file_full;
+				$t_attachment['filesize'] = filesize( $t_attachment['diskfile'] );
+				if ( ON == plugin_config_get( 'dont_show_small_files' ) && $t_attachment['filesize'] <= $t_max_upload_file_size ) {
+					continue;
+				}
 				$t_filename = str_replace( $t_scan_dir, '', $t_file_full );
 				if ( $event !== 'download') {
 					$t_filename = $t_file_prefix . $t_filename;
@@ -144,7 +150,6 @@ class FilesAsAttachmentsPlugin extends MantisPlugin {
 				$t_attachment['filename'] = $t_filename;
 				$t_attachment['title'] = '';
 				$t_attachment['description'] = '';
-				$t_attachment['filesize'] = filesize( $t_attachment['diskfile'] );
 				$t_attachment['file_type'] = mime_content_type( $t_attachment['diskfile'] );
 				$t_attachment['date_added'] = filemtime( $t_attachment['diskfile'] );
 				$t_attachment['can_delete'] = false;
